@@ -16,11 +16,9 @@
         :root {
             --primary: #6366f1;   /* Indigo */
             --secondary: #007efc; /* Azure Blue */
-            --dark: #1a1a1a;      /* Almost Black for Text */
+            --dark: #1a1a1a;      /* Almost Black */
             --light: #FFFFFF;
-            
-            /* UPDATED: Warna Abu Sangat Terang (Clean Look) */
-            --bg-grey: #FAFAFA;   
+            --bg-grey: #FAFAFA;   /* Off-White */
             --border: #E5E7EB;
             
             --font-head: 'Montserrat', sans-serif;
@@ -83,6 +81,7 @@
         }
         .logo { display: flex; align-items: center; gap: 10px; }
         .logo img { height: 40px; width: auto; } 
+        /* Fallback Style jika gambar tidak ada */
         .logo-fallback { font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; color: var(--primary); letter-spacing: -1px;}
 
         .nav-links { display: flex; gap: 40px; align-items: center; }
@@ -93,7 +92,7 @@
         .nav-link:hover { color: var(--primary); }
         .desktop-action { display: block; }
 
-        /* --- 5. EXTRAORDINARY HERO SECTION --- */
+        /* --- 5. HERO SECTION --- */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -125,7 +124,6 @@
             z-index: 2;
         }
 
-        /* Left: Typography */
         .hero-content { display: flex; flex-direction: column; justify-content: center; }
         
         .hero-label {
@@ -155,7 +153,6 @@
             position: relative; height: 600px; display: flex; align-items: center; justify-content: center;
         }
 
-        /* Glass Cards Stack */
         .glass-stack { position: relative; width: 100%; height: 100%; }
         .g-card {
             position: absolute;
@@ -173,9 +170,8 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2; overflow: hidden; 
-            /* UBAH BAGIAN INI */
-            background: #030303;  /* Mengganti var(--dark) menjadi #030303 */
-            border: 1px solid #030303; /* Menambahkan border warna sama agar menyatu */ 
+            background: #030303; 
+            border: 1px solid #030303;
         }
         .g-card-main img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
@@ -198,14 +194,14 @@
             padding: 20px 0; background: white; border-top: 1px solid var(--border);
             overflow: hidden; white-space: nowrap; z-index: 10;
         }
-        .marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
+        .marquee-content { display: inline-block; animation: marquee 40s linear infinite; }
         .marquee-item {
             display: inline-block; padding: 0 40px; font-family: var(--font-head);
             font-weight: 700; font-size: 1rem; color: #999; text-transform: uppercase; letter-spacing: 2px;
         }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- 6. SECTIONS STANDARD --- */
+        /* --- 6. SECTIONS --- */
         .section-padding { padding: 120px 0; }
         
         .vision-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: start; }
@@ -220,11 +216,14 @@
             display: flex; align-items: flex-start; gap: 16px; color: #555;
         }
         .problem-list i { color: var(--secondary); margin-top: 4px; }
-        
         .vision-statement { font-size: 2rem; line-height: 1.4; font-family: var(--font-head); font-weight: 600; color: var(--dark); }
         .highlight { color: var(--primary); }
         
-        /* Services - Lighter Background */
+        .mission-box {
+            margin-top: 60px; padding: 40px; background: var(--bg-grey); 
+            border-left: 5px solid var(--primary); border-radius: 0 12px 12px 0;
+        }
+
         .services-section { padding: 120px 0; background: var(--bg-grey); }
         .accordion-item { border-bottom: 1px solid #d1d5db; padding: 35px 0; cursor: pointer; transition: 0.3s; }
         .accordion-item:first-child { border-top: 1px solid #d1d5db; }
@@ -234,23 +233,17 @@
         .accordion-item.active .acc-title { color: var(--primary); }
         .accordion-item.active .acc-content { max-height: 150px; padding-top: 20px; }
 
-        /* Team - Clean Style (No Name) */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 60px; }
         .team-card { 
             background: white; border: 1px solid var(--border); border-radius: 16px; padding: 40px 30px; text-align: center; transition: 0.3s; 
         }
         .team-card:hover { transform: translateY(-5px); border-color: var(--primary); }
         .team-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; }
-        
-        /* Role styling */
         .team-role { 
             font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; 
             color: var(--secondary); margin-bottom: 15px; display: block; font-family: var(--font-head);
         }
-        /* Title styling (Replacing name) */
-        .team-title { 
-            font-size: 1.3rem; margin-bottom: 0; color: var(--dark); font-weight: 700; font-family: var(--font-head);
-        }
+        .team-title { font-size: 1.3rem; margin-bottom: 0; color: var(--dark); font-weight: 700; font-family: var(--font-head); }
 
         footer { background: #111; color: white; padding: 100px 0 40px; }
         .footer-cta { text-align: center; margin-bottom: 80px; }
@@ -273,10 +266,10 @@
             .nav-links, .desktop-action { display: none; }
             .hamburger { display: block; }
             
-            /* UPDATED: Mobile Hero Spacing Fix */
+            /* MOBILE HERO OPTIMIZATION */
             .hero { 
                 padding-top: 120px;
-                padding-bottom: 180px; /* EXTRA SPACE agar tombol tidak kena Marquee */
+                padding-bottom: 180px; /* EXTRA SPACE agar tombol tidak tertutup marquee */
                 display: block; 
                 min-height: auto;
             }
@@ -284,13 +277,17 @@
             .hero-content { align-items: center; }
             .hero-label { justify-content: center; }
             .hero-title { font-size: 3rem; }
-            .hero-visual { display: none; } /* Hide visual on mobile */
+            .hero-visual { display: none; } 
             
             .hero-btns { flex-direction: column; width: 100%; gap: 15px; align-items: center; }
             .hero-btns .btn { width: 100%; max-width: 320px; }
 
             .vision-grid { grid-template-columns: 1fr; gap: 40px; }
             .context-col { position: relative; top: 0; }
+            
+            /* Mission Box Fix */
+            .mission-box { margin-top: 50px; padding: 30px; }
+            
             .acc-title { font-size: 1.3rem; }
             .footer-cta h2 { font-size: 2.5rem; }
         }
@@ -348,7 +345,7 @@
             <div class="hero-visual">
                 <div class="glass-stack">
                     <div class="g-card g-card-main">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=800&auto=format&fit=crop" alt="Digital Engineering Abstract">
+                        <img src="images/hero.jpg" alt="Sustainable Energy Tech">
                     </div>
                     <div class="g-card g-card-small gc-1">
                         <div class="g-icon"><i class="fa-solid fa-bolt"></i></div>
@@ -378,6 +375,9 @@
                 <span class="marquee-item">Engineering</span>
                 <span class="marquee-item">Growth</span>
                 <span class="marquee-item">Future</span>
+                <span class="marquee-item">Innovation</span>
+                <span class="marquee-item">Technology</span>
+                <span class="marquee-item">Acceleration</span>
             </div>
         </div>
     </header>
@@ -544,5 +544,4 @@
         function openWAService(srv) { /* Optional Logic */ }
     </script>
 </body>
-
 </html>
